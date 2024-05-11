@@ -1,0 +1,4 @@
+bootloader/
+kernel/
+toolchain/
+misc.md

@@ -1,0 +1,33 @@
+services:
+  build:
+    build: 
+      context: ./docker
+      args:
+        UID: ${HOST_UID}
+        GID: ${HOST_GID}
+    tty: true
+    volumes:
+      - toolchain:/opt/toolchain
+      - bootloader:/mnt/bootloader
+      - kernel:/mnt/kernel
+
+volumes:
+  toolchain:
+     driver: local
+     driver_opts:
+       type: none
+       device: ${PWD}/toolchain/
+       o: bind
+
+  bootloader:
+     driver: local
+     driver_opts:
+       type: none
+       device: ${PWD}/bootloader
+       o: bind
+  kernel:
+     driver: local
+     driver_opts:
+       type: none
+       device: ${PWD}/kernel
+       o: bind
